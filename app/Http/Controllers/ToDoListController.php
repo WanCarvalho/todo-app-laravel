@@ -22,6 +22,14 @@ class ToDoListController extends Controller
         return redirect('/');
     }
 
+    public function apagaTarefa($id)
+    {
+        $listItem = Tarefa::find($id);
+        $listItem->delete();
+
+        return redirect('/');
+    }
+
     public function saveItem(Request $request)
     {
 

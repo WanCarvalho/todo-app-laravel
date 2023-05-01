@@ -19,3 +19,5 @@ Route::get('/', [ToDoListController::class, 'index']);
 Route::post('/saveItemRoute', [ToDoListController::class, 'saveItem'])->name('saveItem');
 
 Route::post('/markCompleteRoute/{id}', [ToDoListController::class, 'markComplete'])->name('markComplete');
+
+Route::delete('/apagaTarefaRoute/{id}', [ToDoListController::class, 'apagaTarefa'])->name('apagaTarefa');

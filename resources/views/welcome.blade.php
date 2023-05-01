@@ -408,7 +408,6 @@
             <form method="POST" action="{{ route('saveItem') }}" accept-charset="UTF-8">
                 {{ csrf_field() }} <!--token para comprovar que é o seu site que está mandando essas informações-->
 
-                <!-- <label for="listItem">New item</label> -->
                 <div class="input-group mb-3">
                     <input name="listItem" type="text" class="form-control" placeholder="Nova tarefa" aria-label="Nova Tarefa" aria-describedby="button-addon2">
                     <button class="btn btn-outline-success" type="submit" id="button-addon2">Salvar</button>
@@ -418,15 +417,24 @@
             <!-- foreach serve para buscar no banco de dados as tarefas já cadastradas e retorna na tag <p>-->
             @foreach ($tarefas as $tarefa)
             <div class="flex itemToDo" style="align-items: center;">
-                <p>{{ $tarefa->tarefa }}</p>
-                <form method="post" action="{{ route('markComplete', $tarefa->id) }}" accept-charset="UTF-8">
-                    {{ csrf_field() }} <!--token para comprovar que é o seu site que está mandando essas informações-->
-                    <div class="buttons-box">
-                        <button type="submit" style="background-color: blue; color: white;">Check</button>
-                        <button type="submit" style="background-color: red; color: white;">Delete</button>
-                    </div>
+                <p id="exibeTarefa">{{ $tarefa->tarefa }}</p>
 
-                </form>
+                <div class="container-forms">
+                    <!-- formulário para marcar tarefa como completa -->
+                    <form method="post" action="{{ route('markComplete', $tarefa->id) }}" accept-charset="UTF-8">
+                        {{ csrf_field() }} <!--token para comprovar que é o seu site que está mandando essas informações-->
+
+                        <button class="btn btn-primary" type="submit" style="background-color: blue; color: white;">Check</button>
+                    </form>
+
+                    <!-- formulário para deletar tarefa do banco de dados -->
+                    <form method="post" action="{{ route('apagaTarefa', $tarefa->id) }}">
+                        {{ csrf_field() }}
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit" style="background-color: red; color: white;">Delete</a>
+                    </form>
+                </div>
+
             </div>
             @endforeach
 
@@ -435,6 +443,7 @@
 
 
     <script>
+        //JQuery para alterar 
         $(function() {
             $("p").dblclick(function() {
                 var conteudoOriginal = $(this).text();
@@ -456,6 +465,14 @@
                     $(this).parent().removeClass("celulaEmEdicao");
                 });
             });
+        });
+    </script>
+
+    <script>
+        let tarefa = document.getElementById('exibeTarefa');
+
+        tarefa.addEventListener('keyup', function() {
+            console.log("evento rodando");
         });
     </script>
 </body>
