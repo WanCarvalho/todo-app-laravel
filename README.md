@@ -55,15 +55,15 @@ Abrir pasta do projeto em uma IDE e rodar o comando `php artisan serve` no termi
 
 # Itens da avaliação
 
-A. Criar uma aplicação web utilizando PHP usando o Framework Laravel - Feito
+A. Criar uma aplicação web utilizando PHP usando o Framework Laravel - **Feito**
 
-B. Utilizar persistência em um banco de dados Postegres SQL - Feito
+B. Utilizar persistência em um banco de dados Postegres SQL - **Feito**
 
-C. Utilizar Eloquent ORM - Feito
+C. Utilizar Eloquent ORM - **Feito**
 
-D. Utilizar Bootstrap - Feito
+D. Utilizar Bootstrap - **Feito**
 
-E. Utilizar Jquery UI - Feito
+E. Utilizar Jquery UI - **Feito**
 
 F. Utilizar Teste Unitários com PHPUnit
 
