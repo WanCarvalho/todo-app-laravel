@@ -10,24 +10,12 @@ class ToDoListController extends Controller
     //traz primeiro as tarefas que não estão completas
     public function index()
     {
-        return view('welcome', ['tarefas' => Tarefa::where('is_complete', 0)->get()]);
-    }
 
-    public function markComplete($id)
-    {
-        $listItem = Tarefa::find($id);
-        $listItem->is_complete = 1;
-        $listItem->save();
+        $array = [0,1];
+        //return view('welcome', ['tarefas' => Tarefa::where('is_complete', 0)->get()]);
 
-        return redirect('/');
-    }
-
-    public function apagaTarefa($id)
-    {
-        $listItem = Tarefa::find($id);
-        $listItem->delete();
-
-        return redirect('/');
+        //retorna view com as tarefas ordenadas pelo valor da coluna 'is_complete'
+        return view('welcome', ['tarefas' => Tarefa::whereIn('is_complete', $array)->get()->sortBy('is_complete')]);
     }
 
     public function saveItem(Request $request)
@@ -41,4 +29,29 @@ class ToDoListController extends Controller
 
         return redirect('/'); //volta para página inicial após alterações
     }
+
+    public function markComplete($id)
+    {
+        $listItem = Tarefa::find($id);
+        $listItem->is_complete = 1;
+        $listItem->save();
+
+        return redirect('/');
+    }
+
+    public function atualizaTarefa(Request $request){
+
+        $listItem = Tarefa::find($request->id);
+        $listItem->update();
+
+        return redirect('/');
+    }
+
+    public function apagaTarefa($id)
+    {
+        $listItem = Tarefa::find($id);
+        $listItem->delete();
+
+        return redirect('/');
+    }  
 }

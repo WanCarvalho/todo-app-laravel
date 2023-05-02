@@ -20,4 +20,6 @@ Route::post('/saveItemRoute', [ToDoListController::class, 'saveItem'])->name('sa
 
 Route::post('/markCompleteRoute/{id}', [ToDoListController::class, 'markComplete'])->name('markComplete');
 
+Route::put('/atualizaTarefaRoute/{id}', [ToDoListController::class, 'atualizaTarefa'])->name('atualizaTarefa');
+
 Route::delete('/apagaTarefaRoute/{id}', [ToDoListController::class, 'apagaTarefa'])->name('apagaTarefa');

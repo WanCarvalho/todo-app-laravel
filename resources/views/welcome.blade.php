@@ -417,22 +417,69 @@
             <!-- foreach serve para buscar no banco de dados as tarefas já cadastradas e retorna na tag <p>-->
             @foreach ($tarefas as $tarefa)
             <div class="flex itemToDo" style="align-items: center;">
-                <p id="exibeTarefa">{{ $tarefa->tarefa }}</p>
+
+                <!-- exibir tarefas completas com traço na descrição -->
+                <?php
+
+                if ($tarefa->is_complete == 0) {
+                    echo "<p id='exibeTarefa'> $tarefa->tarefa </p>";
+                } else if ($tarefa->is_complete == 1) {
+                    echo "<p id='exibeTarefa'><s> $tarefa->tarefa </s></p>";
+                }
+
+                ?>
 
                 <div class="container-forms">
                     <!-- formulário para marcar tarefa como completa -->
                     <form method="post" action="{{ route('markComplete', $tarefa->id) }}" accept-charset="UTF-8">
                         {{ csrf_field() }} <!--token para comprovar que é o seu site que está mandando essas informações-->
+                        
+                        <!-- alterar botão concluir para disable caso a tarefa já esteja concluída -->
+                        <?php
 
-                        <button class="btn btn-primary" type="submit" style="background-color: blue; color: white;">Check</button>
+                        if ($tarefa->is_complete == 0) {
+                            echo "<button class='btn btn-primary btn-sm' type='submit'>Concluir</button>";
+                        } else if ($tarefa->is_complete == 1) {
+                            echo "<button class='btn btn-primary btn-sm disabled' type='submit'>Concluir</button>";
+                        }
+
+                        ?>
+
+                        
                     </form>
 
                     <!-- formulário para deletar tarefa do banco de dados -->
                     <form method="post" action="{{ route('apagaTarefa', $tarefa->id) }}">
                         {{ csrf_field() }}
                         @method('DELETE')
-                        <button class="btn btn-danger" type="submit" style="background-color: red; color: white;">Delete</a>
+                        <button class="btn btn-danger btn-sm" type="submit">Apagar</a>
                     </form>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Atualizar</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Atualizar Tarefa</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- formulário para editar tarefa -->
+                                <form method="post" action="{{ route('atualizaTarefa', $tarefa->id) }}">
+                                    {{ csrf_field() }}
+                                    @method('PUT')
+                                    <div class="modal-body">
+                                        <input class="form-control" type="text" value="{{ $tarefa->tarefa }}">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        <button class="btn btn-success" type="submit">Atualizar</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -440,41 +487,6 @@
 
         </div>
     </div>
-
-
-    <script>
-        //JQuery para alterar 
-        $(function() {
-            $("p").dblclick(function() {
-                var conteudoOriginal = $(this).text();
-
-                $(this).addClass("celulaEmEdicao");
-                $(this).html("<input type='text' value='" + conteudoOriginal + "' />");
-                $(this).children().first().focus();
-
-                $(this).children().first().keypress(function(e) {
-                    if (e.which == 13) {
-                        var novoConteudo = $(this).val();
-                        $(this).parent().text(novoConteudo);
-                        $(this).parent().removeClass("celulaEmEdicao");
-                    }
-                });
-
-                $(this).children().first().blur(function() {
-                    $(this).parent().text(conteudoOriginal);
-                    $(this).parent().removeClass("celulaEmEdicao");
-                });
-            });
-        });
-    </script>
-
-    <script>
-        let tarefa = document.getElementById('exibeTarefa');
-
-        tarefa.addEventListener('keyup', function() {
-            console.log("evento rodando");
-        });
-    </script>
 </body>
 
 </html>

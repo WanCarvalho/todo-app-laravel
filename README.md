@@ -1,66 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Orientações da Aplicação ToDo
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Passos para desenvolvimento da aplicação ToDo
 
-## About Laravel
+1- Instalação do PHP 8.0.26.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2- Instalação do PostgreSQL 15.
+3- Instalação e criação do projeto Laravel com Composer.
+4- Instalação do PostgreSQL e realização das configurações do banco.
+5- Criação do banco de dados no PostgreSQL.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![Untitled](Orientac%CC%A7o%CC%83es%20da%20Aplicac%CC%A7a%CC%83o%20ToDo%20b7d571f4766549b4b6d1ec20eaabada0/Untitled.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+6- Início do desenvolvimento da aplicação utilizando o padrão MVC.
 
-## Learning Laravel
+7- Configurações do arquivo php.conf:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Descomentar linha com ‘extension=openssl’. Pode ocorrer erro para iniciar o servidor incorporado caso essa linha não seja descomentada.
+- Descomentar linha com ‘extension=pdo_pgsql’. Extensão necessária para integração com o banco de dados PostgreSQL.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# Configurar Banco de Dados da aplicação
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Criar banco de dados com o nome: listaToDo.
+- Utilizar o comando ‘Restore’ com o arquivo abaixo (para restaurar estruturas da tabela de tarefas criada para persistência dos dados):
 
-## Laravel Sponsors
+[dbTarefas.sql](Orientac%CC%A7o%CC%83es%20da%20Aplicac%CC%A7a%CC%83o%20ToDo%20b7d571f4766549b4b6d1ec20eaabada0/dbTarefas.sql)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Lembrar de configurar arquivo .env do projeto com o usuário e senha do banco de dados local criado. No meu caso criei o Usuário padrão: postgres e Senha: admin.
 
-### Premium Partners
+![Configurações do Banco no arquivo .env](Orientac%CC%A7o%CC%83es%20da%20Aplicac%CC%A7a%CC%83o%20ToDo%20b7d571f4766549b4b6d1ec20eaabada0/Untitled%201.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Configurações do Banco no arquivo .env
 
-## Contributing
+# Formas de rodar o projeto localmente
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Usar servidor incorporado do PHP
 
-## Code of Conduct
+Acessar o diretório do projeto via CMD e utilizar o comando: `php -S localhost:8000 -t public`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Usar servidor incorporado do Laravel
 
-## Security Vulnerabilities
+Abrir pasta do projeto em uma IDE e rodar o comando `php artisan serve` no terminal.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Itens da avaliação
 
-## License
+A. Criar uma aplicação web utilizando PHP usando o Framework Laravel - Feito
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+B. Utilizar persistência em um banco de dados Postegres SQL - Feito
+
+C. Utilizar Eloquent ORM - Feito
+
+D. Utilizar Bootstrap - Feito
+
+E. Utilizar Jquery UI
+
+F. Utilizar Teste Unitários com PHPUnit
+
+G. Criar single page app utilizando VueJS ou Angular
+
+H. Publicar projeto em um Servidor WEB na internet
+
+I. Criar aplicativo mobile utilizando Flutter
