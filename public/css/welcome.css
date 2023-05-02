@@ -17,6 +17,10 @@
     margin: .2rem;
 }
 
+.botao-atualizar{
+    visibility: hidden;
+}
+
 .buttons-box {
     display: flex;
     flex-direction: column;

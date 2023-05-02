@@ -11,7 +11,7 @@ class ToDoListController extends Controller
     public function index()
     {
 
-        $array = [0,1];
+        $array = [0, 1];
         //return view('welcome', ['tarefas' => Tarefa::where('is_complete', 0)->get()]);
 
         //retorna view com as tarefas ordenadas pelo valor da coluna 'is_complete'
@@ -39,9 +39,10 @@ class ToDoListController extends Controller
         return redirect('/');
     }
 
-    public function atualizaTarefa(Request $request){
+    public function atualizaTarefa(Request $request, $id){
 
-        $listItem = Tarefa::find($request->id);
+        $listItem = Tarefa::find($id);
+        $listItem->tarefa = $request->inputTarefa;
         $listItem->update();
 
         return redirect('/');
@@ -53,5 +54,5 @@ class ToDoListController extends Controller
         $listItem->delete();
 
         return redirect('/');
-    }  
+    }
 }

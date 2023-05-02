@@ -63,7 +63,7 @@ C. Utilizar Eloquent ORM - Feito
 
 D. Utilizar Bootstrap - Feito
 
-E. Utilizar Jquery UI
+E. Utilizar Jquery UI - Feito
 
 F. Utilizar Teste Unitários com PHPUnit
 
