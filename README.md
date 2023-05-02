@@ -31,10 +31,15 @@
 ## Minhas configurações do arquivo .env
 
 DB_CONNECTION=pgsql
+
 DB_HOST=localhost
+
 DB_PORT=5432
+
 DB_DATABASE=listaToDo
+
 DB_USERNAME=postgres
+
 DB_PASSWORD=admin
 
 
