@@ -5,11 +5,12 @@
 1- Instalação do PHP 8.0.26.
 
 2- Instalação do PostgreSQL 15.
-3- Instalação e criação do projeto Laravel com Composer.
-4- Instalação do PostgreSQL e realização das configurações do banco.
-5- Criação do banco de dados no PostgreSQL.
 
-![Untitled](Orientac%CC%A7o%CC%83es%20da%20Aplicac%CC%A7a%CC%83o%20ToDo%20b7d571f4766549b4b6d1ec20eaabada0/Untitled.png)
+3- Instalação e criação do projeto Laravel com Composer.
+
+4- Instalação do PostgreSQL e realização das configurações do banco.
+
+5- Criação do banco de dados e tabela tarefas no PostgreSQL.
 
 6- Início do desenvolvimento da aplicação utilizando o padrão MVC.
 
@@ -23,13 +24,19 @@
 - Criar banco de dados com o nome: listaToDo.
 - Utilizar o comando ‘Restore’ com o arquivo abaixo (para restaurar estruturas da tabela de tarefas criada para persistência dos dados):
 
-[dbTarefas.sql](Orientac%CC%A7o%CC%83es%20da%20Aplicac%CC%A7a%CC%83o%20ToDo%20b7d571f4766549b4b6d1ec20eaabada0/dbTarefas.sql)
+[Arquivo para Restore do banco de dados](https://github.com/WanCarvalho/todo-app-laravel/blob/master/dbTarefas.sql)
 
 - Lembrar de configurar arquivo .env do projeto com o usuário e senha do banco de dados local criado. No meu caso criei o Usuário padrão: postgres e Senha: admin.
 
-![Configurações do Banco no arquivo .env](Orientac%CC%A7o%CC%83es%20da%20Aplicac%CC%A7a%CC%83o%20ToDo%20b7d571f4766549b4b6d1ec20eaabada0/Untitled%201.png)
+## Minhas configurações do arquivo .env
 
-Configurações do Banco no arquivo .env
+DB_CONNECTION=pgsql
+DB_HOST=localhost
+DB_PORT=5432
+DB_DATABASE=listaToDo
+DB_USERNAME=postgres
+DB_PASSWORD=admin
+
 
 # Formas de rodar o projeto localmente
 
