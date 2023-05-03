@@ -1,3 +1,7 @@
+# Orientações em formato de vídeo no YouTube
+
+[Vídeo Explicativo](https://youtu.be/W3H7iJrVhOA)
+
 # Orientações da Aplicação ToDo
 
 ## Assim que baixar o projeto executar os seguintes comandos no terminal, utilizando o caminho do gerenciador de arquivos onde a pasta do projeto se encontra.
