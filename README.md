@@ -60,7 +60,7 @@ DB_PASSWORD=admin
 7- Configurações do arquivo php.conf:
 
 - Descomentar linha com ‘extension=openssl’. Pode ocorrer erro para iniciar o servidor incorporado caso essa linha não seja descomentada.
-- Descomentar linha com ‘extension=pdo_pgsql’. Extensão necessária para integração com o banco de dados PostgreSQL.
+- Descomentar linha com ‘extension=pdo_pgsql’ e ‘extension=pgsql’. Extensão necessária para integração com o banco de dados PostgreSQL.
 
 8- Finalização do projeto e alocação do projeto no repositório do GitHub
 
