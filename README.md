@@ -1,6 +1,35 @@
 # Orientações da Aplicação ToDo
 
-# Passos para desenvolvimento da aplicação ToDo
+## Assim que baixar o projeto executar os seguintes comandos no terminal, utilizando o caminho do gerenciador de arquivos onde a pasta do projeto se encontra.
+
+# Passos para iniciar projeto na máquina local
+
+1- Neste projeto optei por utilizar o Banco de Dados padrão 'postgres' do PostgreSQL 15 para facilitar no funcionamento da aplicação em outros ambientes locais que não fossem a minha máquina pessoal.
+
+2- Acessando o diretório do projeto pelo terminal utilizar comando para instalar dependências do Laravel via Composer: ``` composer install ```
+
+3- Logo depois gerar chave com: ``` php artisan key:generate ```
+
+- Antes de executar o próximo comando configurar arquivo .env com as informações do banco de dados local. No meu caso criei o Usuário padrão: postgres e Senha: admin, mas podem ser alterados conforme eles foram criados na sua máquina local, assim como as outras informações.
+
+## Minhas configurações do arquivo .env
+
+DB_CONNECTION=pgsql
+
+DB_HOST=localhost
+
+DB_PORT=5432
+
+DB_DATABASE=postgres
+
+DB_USERNAME=postgres
+
+DB_PASSWORD=admin
+
+
+4- Acessar diretório do projeto e utilizar comando para migrar estruturas de tabelas para o banco de dados: ``` php artisan migrate ```
+
+# Passos que utilizei para desenvolvimento da aplicação ToDo
 
 1- Instalação do PHP 8.0.26.
 
@@ -19,39 +48,18 @@
 - Descomentar linha com ‘extension=openssl’. Pode ocorrer erro para iniciar o servidor incorporado caso essa linha não seja descomentada.
 - Descomentar linha com ‘extension=pdo_pgsql’. Extensão necessária para integração com o banco de dados PostgreSQL.
 
-# Configurar Banco de Dados da aplicação
-
-- Criar banco de dados com o nome: listaToDo.
-- Utilizar o comando ‘Restore’ com o arquivo abaixo (para restaurar estruturas da tabela de tarefas criada para persistência dos dados):
-
-[Arquivo para Restore do banco de dados](https://github.com/WanCarvalho/todo-app-laravel/blob/master/dbTarefas.sql)
-
-- Lembrar de configurar arquivo .env do projeto com o usuário e senha do banco de dados local criado. No meu caso criei o Usuário padrão: postgres e Senha: admin.
-
-## Minhas configurações do arquivo .env
-
-DB_CONNECTION=pgsql
-
-DB_HOST=localhost
-
-DB_PORT=5432
-
-DB_DATABASE=listaToDo
-
-DB_USERNAME=postgres
-
-DB_PASSWORD=admin
+8- Finalização do projeto e alocação do projeto no repositório do GitHub
 
 
 # Formas de rodar o projeto localmente
 
 ## Usar servidor incorporado do PHP
 
-Acessar o diretório do projeto via CMD e utilizar o comando: `php -S localhost:8000 -t public`
+Acessar o diretório do projeto via CMD e utilizar o comando: `php -S localhost:8000 -t public`.
 
 ## Usar servidor incorporado do Laravel
 
-Abrir pasta do projeto em uma IDE e rodar o comando `php artisan serve` no terminal.
+Acessar o diretório do projeto via CMD e utilizar o comando: `php artisan serve`.
 
 # Itens da avaliação
 
