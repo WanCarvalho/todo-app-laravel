@@ -53,12 +53,12 @@
                     <table class="table table-bordered table-striped table-hover mt-4">
                         <thead>
                             <tr>
-                                <th colspan="3">Tarefas</th>
+                                <th colspan="4">Tarefas</th>
                             </tr>
                             <tr>
                                 <th>Título</th>
                                 <th>Descrição</th>
-                                <td>Status</td>
+                                <th>Status</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
