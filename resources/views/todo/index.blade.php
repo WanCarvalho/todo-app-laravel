@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="container-fluid m-0">
+    <div class="container-fluid">
 
         <x-navbar />
 
@@ -28,8 +28,32 @@
                     <x-alert-error />
                     <x-alert-success />
 
-                    <table class="table table-bordered table-striped table-hover">
+                    <form action="" method="POST">
+                        @csrf
+
+                        <div class="card p-4">
+                            <div class="card-header">
+                                <h5>Nova Tarefa</h5>
+                            </div>
+                            <div class="form-floating mt-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Título">
+                                <label for="floatingInput">Título</label>
+                            </div>
+                            <div class="form-floating mt-3">
+                                <textarea class="form-control" placeholder="Descrição" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Descrição</label>
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <button class="btn btn-success" type="button">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <table class="table table-bordered table-striped table-hover mt-4">
                         <thead>
+                            <tr>
+                                <th colspan="3">Tarefas</th>
+                            </tr>
                             <tr>
                                 <th>Título</th>
                                 <th>Descrição</th>
@@ -37,11 +61,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
+                            @forelse($tarefas as $item)
+                                <tr>
+                                    <td>{{ $item->titulo }}</td>
+                                    <td>{{ $item->descricao }}</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm"
+                                            href=""
+                                            title="Editar">Editar
+                                        </a>
+                                        <a class="btn btn-danger btn-sm"
+                                        href=""
+                                        title="Excluir">Excluir
+                                    </a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
