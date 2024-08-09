@@ -24,11 +24,11 @@
         <div class="row w-100">
             <div class="d-flex justify-content-center align-items-center mt-5">
 
-                <div class="card text-center w-50 p-5">
+                <div class="card text-center w-75 p-5">
                     <x-alert-error />
                     <x-alert-success />
 
-                    <form action="" method="POST">
+                    <form action="{{ route('todo.store') }}" method="POST">
                         @csrf
 
                         <div class="card p-4">
@@ -36,15 +36,16 @@
                                 <h5>Nova Tarefa</h5>
                             </div>
                             <div class="form-floating mt-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="Título">
+                                <input type="text" name="titulo" class="form-control" id="floatingInput"
+                                    placeholder="Título">
                                 <label for="floatingInput">Título</label>
                             </div>
                             <div class="form-floating mt-3">
-                                <textarea class="form-control" placeholder="Descrição" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <textarea name="descricao" class="form-control" placeholder="Descrição" id="floatingTextarea2" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Descrição</label>
                             </div>
                             <div class="d-grid gap-2 mt-3">
-                                <button class="btn btn-success" type="button">Salvar</button>
+                                <button class="btn btn-success" type="submit">Salvar</button>
                             </div>
                         </div>
                     </form>
@@ -57,6 +58,7 @@
                             <tr>
                                 <th>Título</th>
                                 <th>Descrição</th>
+                                <td>Status</td>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -65,15 +67,29 @@
                                 <tr>
                                     <td>{{ $item->titulo }}</td>
                                     <td>{{ $item->descricao }}</td>
+                                    @if ($item->concluido)
+                                        <td>
+                                            <a class="btn btn-success btn-sm"
+                                                href="{{ route('todo.alterarStatus', ['tarefa' => $item]) }}"
+                                                title="Alterar Status">Concluído
+                                            </a>
+                                        </td>
+                                    @else
+                                        <td>
+                                            <a class="btn btn-warning btn-sm"
+                                                href="{{ route('todo.alterarStatus', ['tarefa' => $item]) }}"
+                                                title="Alterar Status">Não concluído
+                                            </a>
+                                        </td>
+                                    @endif
                                     <td>
                                         <a class="btn btn-primary btn-sm"
-                                            href=""
-                                            title="Editar">Editar
+                                            href="{{ route('todo.edit', ['tarefa' => $item]) }}" title="Editar">Editar
                                         </a>
                                         <a class="btn btn-danger btn-sm"
-                                        href=""
-                                        title="Excluir">Excluir
-                                    </a>
+                                            href="{{ route('todo.delete', ['tarefa' => $item]) }}"
+                                            title="Excluir">Excluir
+                                        </a>
                                     </td>
                                 </tr>
                             @empty
