@@ -28,6 +28,7 @@ class UserController extends Controller
      * Salva novo usuário no banco de dados.
      * 
      * @param Request $request Dados do form de cadastro.
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {

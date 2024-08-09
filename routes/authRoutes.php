@@ -16,3 +16,6 @@ Route::get('/cadastro', [UserController::class, 'create'])
 
 Route::post('/cadastro', [UserController::class, 'store'])
     ->name('auth.cadastrar');
+
+Route::get('/logout', [LoginController::class, 'logout'])
+    ->name('auth.logout');

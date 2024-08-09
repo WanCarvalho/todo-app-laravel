@@ -17,17 +17,33 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid m-0">
+
+        <x-navbar />
 
         <div class="row w-100">
             <div class="d-flex justify-content-center align-items-center mt-5">
 
                 <div class="card text-center w-50 p-5">
-
                     <x-alert-error />
                     <x-alert-success />
 
-                    <h5>Index list</h5>
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Descrição</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
