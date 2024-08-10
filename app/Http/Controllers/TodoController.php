@@ -13,7 +13,7 @@ class TodoController extends Controller
     public function index()
     {
         $usuarioAtualID = auth()->user()->id;
-        $tarefas = Todo::where('user_id', $usuarioAtualID)->get();
+        $tarefas = Todo::where('user_id', $usuarioAtualID)->paginate(5);
 
         return view('todo.index', compact('tarefas'));
     }
@@ -23,6 +23,17 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descricao' => 'nullable|string|max:1000',
+        ], [
+            'titulo.required' => 'O título é obrigatório.',
+            'titulo.string' => 'O título deve ser uma string.',
+            'titulo.max' => 'O título não pode ter mais de 255 caracteres.',
+            'descricao.string' => 'A descrição deve ser uma string.',
+            'descricao.max' => 'A descrição não pode ter mais de 1000 caracteres.',
+        ]);
+
         $novaTarefa = new Todo();
         $novaTarefa->titulo = $request->input('titulo');
         $novaTarefa->descricao = $request->input('descricao');
@@ -30,9 +41,9 @@ class TodoController extends Controller
         $statusStore = $novaTarefa->save();
 
         if ($statusStore) {
-            return redirect()->route('todo.index')->withSuccess('Tarefa adicionada com sucesso.');
+            return redirect()->back()->withSuccess('Tarefa adicionada com sucesso.');
         } else {
-            return redirect()->route('todo.index')->withSuccess('Erro ao adicionar nova tarefa.');
+            return redirect()->back()->withSuccess('Erro ao adicionar nova tarefa.');
         }
     }
 
@@ -51,15 +62,26 @@ class TodoController extends Controller
      */
     public function update(Request $request, $tarefa)
     {
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descricao' => 'nullable|string|max:1000',
+        ], [
+            'titulo.required' => 'O título é obrigatório.',
+            'titulo.string' => 'O título deve ser uma string.',
+            'titulo.max' => 'O título não pode ter mais de 255 caracteres.',
+            'descricao.string' => 'A descrição deve ser uma string.',
+            'descricao.max' => 'A descrição não pode ter mais de 1000 caracteres.',
+        ]);
+
         $tarefa = Todo::find($tarefa);
         $tarefa->titulo = $request->input('titulo');
         $tarefa->descricao = $request->input('descricao');
         $statusUpdate = $tarefa->update();
 
         if ($statusUpdate) {
-            return redirect()->route('todo.index')->withSuccess('Tarefa atualizada com sucesso.');
+            return redirect()->back()->withSuccess('Tarefa atualizada com sucesso.');
         } else {
-            return redirect()->route('todo.index')->withSuccess('Erro ao atualizar a tarefa.');
+            return redirect()->back()->withSuccess('Erro ao atualizar a tarefa.');
         }
     }
 
@@ -72,26 +94,26 @@ class TodoController extends Controller
         $statusDelete = $tarefa->delete();
 
         if ($statusDelete) {
-            return redirect()->route('todo.index')->withSuccess('Tarefa excluída com sucesso.');
+            return redirect()->back()->withSuccess('Tarefa excluída com sucesso.');
         } else {
-            return redirect()->route('todo.index')->withSuccess('Erro ao excluir a tarefa.');
+            return redirect()->back()->withSuccess('Erro ao excluir a tarefa.');
         }
     }
 
-    public function alterarStatusTarefa($tarefa){
+    public function alterarStatusTarefa($tarefa)
+    {
         $tarefa = Todo::find($tarefa);
 
-        if($tarefa->concluido){
+        if ($tarefa->concluido) {
             $tarefa->concluido = false;
             $tarefa->update();
 
-            return redirect()->route('todo.index')->withSuccess('Tarefa desmarcada como concluída.');
+            return redirect()->back()->withSuccess('Tarefa desmarcada como concluída.');
         } else {
             $tarefa->concluido = true;
             $tarefa->update();
 
-            return redirect()->route('todo.index')->withSuccess('Tarefa marcada como concluída.');
+            return redirect()->back()->withSuccess('Tarefa marcada como concluída.');
         }
-        
     }
 }

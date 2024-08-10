@@ -38,24 +38,24 @@
                             <div class="row text-start">
                                 <div class="col-6">
                                     <label for="username" class="form-label">Nome:</label>
-                                    <input type="text" class="form-control" placeholder="Nome" name="nome" required>
+                                    <input type="text" class="form-control" placeholder="Nome" name="nome" value="{{ old('nome') }}" required>
                                 </div>
                                 <div class="col-6">
                                     <label for="username" class="form-label">Sobrenome:</label>
-                                    <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome" required>
+                                    <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome" value="{{ old('sobrenome') }}" required>
                                 </div>
                             </div>
                             <div class="text-start mt-3">
                                 <label for="username" class="form-label">E-mail:</label>
-                                <input type="email" class="form-control" placeholder="E-mail" name="email" required>
+                                <input type="email" class="form-control" placeholder="E-mail" name="email" value="{{ old('email') }}" required>
                             </div>
                             <div class="text-start mt-3">
                                 <label for="username" class="form-label">Senha:</label>
-                                <input type="password" class="form-control" placeholder="Senha" name="password" required>
+                                <input type="password" class="form-control" placeholder="Senha" name="password" value="{{ old('password') }}" required>
                             </div>
                             <div class="text-start mt-3">
                                 <label for="username" class="form-label">Confirmação de senha:</label>
-                                <input type="password" class="form-control" placeholder="Senha" name="password-confirm" required>
+                                <input type="password" class="form-control" placeholder="Senha" name="password-confirm" value="{{ old('password-confirm') }}" required>
                             </div>
 
                             <div class="d-grid gap-2 col-6 mx-auto mt-4">

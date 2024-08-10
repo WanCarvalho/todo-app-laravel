@@ -44,7 +44,7 @@ class UserController extends Controller
         if($novoUser['success']){
             Auth::attempt([
                 'email' => $request->input('email'),
-                'password' => bcrypt($request->input('password'))
+                'password' => $request->input('password')
             ]);
 
             return redirect()->route('todo.index')->withSuccess($novoUser['message'])->withInput();

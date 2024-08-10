@@ -22,7 +22,7 @@
         <x-navbar />
 
         <div class="row w-100">
-            <div class="d-flex justify-content-center align-items-center mt-5">
+            <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
 
                 <div class="card text-center w-75 p-5">
                     <x-alert-error />
@@ -37,12 +37,12 @@
                             </div>
                             <div class="form-floating mt-3">
                                 <input type="text" name="titulo" class="form-control" id="floatingInput"
-                                    placeholder="Título">
+                                    placeholder="Título" maxlength="255">
                                 <label for="floatingInput">Título</label>
                             </div>
                             <div class="form-floating mt-3">
-                                <textarea name="descricao" class="form-control" placeholder="Descrição" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Descrição</label>
+                                <textarea name="descricao" class="form-control" placeholder="Descrição" id="floatingTextarea2" style="height: 100px" maxlength="1000"></textarea>
+                                <label for="floatingTextarea2" maxle>Descrição</label>
                             </div>
                             <div class="d-grid gap-2 mt-3">
                                 <button class="btn btn-success" type="submit">Salvar</button>
@@ -59,7 +59,7 @@
                                 <th>Título</th>
                                 <th>Descrição</th>
                                 <th>Status</th>
-                                <th>Ações</th>
+                                <th width="150px">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,7 +78,7 @@
                                         <td>
                                             <a class="btn btn-warning btn-sm"
                                                 href="{{ route('todo.alterarStatus', ['tarefa' => $item]) }}"
-                                                title="Alterar Status">Não concluído
+                                                title="Alterar Status">Não Concluído
                                             </a>
                                         </td>
                                     @endif
@@ -97,10 +97,15 @@
                                     <td>-</td>
                                     <td>-</td>
                                     <td>-</td>
+                                    <td>-</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $tarefas->links('pagination::bootstrap-4') }}
+                    </div>
+
                 </div>
 
             </div>
