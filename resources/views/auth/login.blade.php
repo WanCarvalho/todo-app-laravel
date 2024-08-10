@@ -14,6 +14,9 @@
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+    </script>
 </head>
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50" height="100vh">
@@ -36,12 +39,12 @@
                         <div class="card-body">
                             <div class="form-floating mb-3 mt-3">
                                 <input type="email" class="form-control" id="floatingInput" name="email"
-                                    placeholder="name@example.com">
+                                    placeholder="name@example.com" value="{{ old('email') }}">
                                 <label for="floatingInput">E-mail</label>
                             </div>
                             <div class="form-floating">
                                 <input type="password" class="form-control" id="floatingPassword" name="password"
-                                    placeholder="Password">
+                                    placeholder="Password" value="{{ old('password') }}">
                                 <label for="floatingPassword">Senha</label>
                             </div>
 

@@ -14,6 +14,9 @@
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+    </script>
 </head>
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50" height="100vh">
@@ -38,24 +41,29 @@
                             <div class="row text-start">
                                 <div class="col-6">
                                     <label for="username" class="form-label">Nome:</label>
-                                    <input type="text" class="form-control" placeholder="Nome" name="nome" value="{{ old('nome') }}" required>
+                                    <input type="text" class="form-control" placeholder="Nome" name="nome"
+                                        value="{{ old('nome') }}" required>
                                 </div>
                                 <div class="col-6">
                                     <label for="username" class="form-label">Sobrenome:</label>
-                                    <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome" value="{{ old('sobrenome') }}" required>
+                                    <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome"
+                                        value="{{ old('sobrenome') }}" required>
                                 </div>
                             </div>
                             <div class="text-start mt-3">
                                 <label for="username" class="form-label">E-mail:</label>
-                                <input type="email" class="form-control" placeholder="E-mail" name="email" value="{{ old('email') }}" required>
+                                <input type="email" class="form-control" placeholder="E-mail" name="email"
+                                    value="{{ old('email') }}" required>
                             </div>
                             <div class="text-start mt-3">
                                 <label for="username" class="form-label">Senha:</label>
-                                <input type="password" class="form-control" placeholder="Senha" name="password" value="{{ old('password') }}" required>
+                                <input type="password" class="form-control" placeholder="Senha" name="password"
+                                    value="{{ old('password') }}" required>
                             </div>
                             <div class="text-start mt-3">
                                 <label for="username" class="form-label">Confirmação de senha:</label>
-                                <input type="password" class="form-control" placeholder="Senha" name="password-confirm" value="{{ old('password-confirm') }}" required>
+                                <input type="password" class="form-control" placeholder="Senha" name="password-confirm"
+                                    value="{{ old('password-confirm') }}" required>
                             </div>
 
                             <div class="d-grid gap-2 col-6 mx-auto mt-4">

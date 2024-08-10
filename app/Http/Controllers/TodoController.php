@@ -13,7 +13,7 @@ class TodoController extends Controller
     public function index()
     {
         $usuarioAtualID = auth()->user()->id;
-        $tarefas = Todo::where('user_id', $usuarioAtualID)->paginate(5);
+        $tarefas = Todo::where('user_id', $usuarioAtualID)->orderBy('concluido', 'ASC')->paginate(5);
 
         return view('todo.index', compact('tarefas'));
     }

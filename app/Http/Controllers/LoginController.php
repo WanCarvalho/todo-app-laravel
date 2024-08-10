@@ -25,7 +25,7 @@ class LoginController extends Controller
 
             return redirect()->route('todo.index');
         } else {
-            return redirect()->back()->withErrors('Usuário ou senha inválida.');
+            return redirect()->back()->withErrors('Usuário ou senha inválida.')->withInput();
         }
     }
 
