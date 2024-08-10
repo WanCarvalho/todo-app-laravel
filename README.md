@@ -9,7 +9,7 @@ A aplicação Todo List é uma solução simples e eficiente para gerenciar tare
 - **Adicionar Tarefas**: Crie novas tarefas fornecendo um título e uma descrição opcional. As tarefas serão armazenadas no banco de dados e exibidas na lista principal.
 - **Visualizar Tarefas**: Veja todas as suas tarefas em uma lista organizada. Cada tarefa exibe seu título e permite acessar ações adicionais, como editar ou excluir.
 - **Editar Tarefas**: Atualize o título e a descrição das suas tarefas a qualquer momento. As alterações são salvas e refletidas na lista de tarefas.
-- **Excluir Tarefas**: Remova tarefas que não são mais necessárias. A exclusão é permanente e a tarefa será removida da lista.
+- **Excluir Tarefas**: Remova tarefas que não são mais necessárias.
 - **Alterar o Status das Tarefas**: Altere o status das tarefas para marcá-las como concluídas ou não concluídas.
 
 ## Tecnologias Utilizadas
